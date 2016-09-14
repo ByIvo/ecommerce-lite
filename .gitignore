@@ -1,3 +1,5 @@
 #BUILD FILES
 target/*
 
+#Context
+rc/main/webapp/META-INF/context.xml
