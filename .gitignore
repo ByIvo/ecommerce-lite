@@ -2,4 +2,12 @@
 target/*
 
 #Context
-rc/main/webapp/META-INF/context.xml
+src/main/webapp/META-INF/context.xml
+
+#Context /src/main/webapp/WEB-INF/app
+
+/src/main/app/node_modules/*
+
+/src/main/app/public/vendor/*
+
+/src/main/app/dist/*

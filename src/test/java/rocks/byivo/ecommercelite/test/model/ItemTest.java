@@ -57,6 +57,20 @@ public class ItemTest {
         assertFalse(isValid);
         assertEquals(NAME_TOO_LONG, errors.get(FIELD_NAME));
     }
+    
+    @Test
+    public void testDescriptionTooLong() {
+        Item item = new Item();
+        item.setName("VALID NAME");
+        item.setBoughtPrice(200.0);
+        item.setDescription("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
+        boolean isValid = item.isValid();
+        Map<String, Object> errors = item.getErrors();
+
+        assertFalse(isValid);
+        assertEquals(DESCRIPTION_TOO_LONG, errors.get(FIELD_DESCRIPTION));
+    }
 
     @Test
     public void testInvalidNegativeBoughtPrice() {

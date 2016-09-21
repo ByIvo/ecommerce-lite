@@ -17,7 +17,43 @@
     <context:component-scan base-package="rocks.byivo.ecommercelite"/>
     <context:annotation-config />
     
-     <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+    <bean id="jpaAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="true" />
+    </bean>
+    
+    <!-- EntityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="packagesToScan" value="rocks.byivo.ecommercelite.model" />
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter" ref="jpaAdapter"/>
+        <property name="persistenceUnitName" value="persistenceUnit"/>
+        
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        
+    </bean>
+                
+    <!-- Transaction Manager -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <!-- Enable @Transactional annotation -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/ecommerceliteApiDb" />
+    </bean>
+   
+
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
 
     <!-- JACKSON CONFIGURATIONS-->
     <!-- ALLOWS CUSTOM CREATION IN JAVA OBJECT PARSE TO JSON OBJECT -->
@@ -42,12 +78,15 @@
         </property>
     </bean>
     
+    <!--MAVEN COPIES DIST FILES INTO WEB-INF's APP FOLDER AND SPRING REGISTER ITS AS RESOURCE-->
+    <mvc:resources mapping="/**/*" location="/WEB-INF/app/" />
     
+    <!--<mvc:resources mapping="/index.html" location="/index.html" />-->
     
-    <bean id="viewResolver"
+<!--    <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
-          p:suffix=".jsp" />
+          p:suffix=".jsp" />-->
 
     <!--
     The index controller.
