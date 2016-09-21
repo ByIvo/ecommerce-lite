@@ -5,6 +5,7 @@
  */
 package rocks.byivo.ecommercelite.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +20,9 @@ public abstract class Entity implements Serializable{
     public abstract Integer getId();
     public abstract void setId(Integer id);
     protected abstract boolean isThisEntityValid();
+    public abstract <T extends Entity> void safeUpdateItself(T obj);
     
+    @JsonIgnore
     protected Map<String, Object> errors;
 
     public Entity() {
@@ -30,6 +33,7 @@ public abstract class Entity implements Serializable{
         return errors;
     }
     
+    @JsonIgnore
     public boolean isValid() {
         this.errors.clear();
         return this.isThisEntityValid();

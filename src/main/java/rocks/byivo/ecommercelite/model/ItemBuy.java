@@ -5,60 +5,80 @@
  */
 package rocks.byivo.ecommercelite.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import static rocks.byivo.ecommercelite.model.ModelValidation.ItemBuy.*;
+
 /**
  *
  * @author byivo
  */
-public final class ItemBuy extends Entity{
-    
+@javax.persistence.Entity
+@Table(name = "items_buy")
+public final class ItemBuy extends Entity {
+
+    @GeneratedValue
+    @Id
     private Integer id;
-    
-    private Double boughtPrice;
-    
+
+    @Column(name = "bought_price", nullable = false)
+    private double boughtPrice;
+
+    @ManyToOne
+    @JoinColumn(name = "item_id", nullable = false)
     private Item item;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "buy_id", nullable = false)
     private Buy buy;
-    
+
+    @Column(name = "item_qnt", nullable = false)
     private int itemQnt;
 
     public ItemBuy() {
     }
-    
+
     public ItemBuy(Buy buy, Item item) {
         this.setItem(item);
         this.buy = buy;
+    }
+
+    @Override
+    public <T extends Entity> void safeUpdateItself(T obj) {
     }
     
     public double getTotalCost() {
         double avgExpenses = this.getBuy().getAvgExpenses();
         double profits = this.getBuy().getProfitRate();
-        
+
         return itemQnt * this.getItem().getFinalPrice(avgExpenses, profits);
     }
 
-    
     @Override
     protected boolean isThisEntityValid() {
-        if(this.getItem() == null) {
+        if (this.getItem() == null) {
             this.errors.put(FIELD_ITEM, INVALID_ITEM);
-        }else if(!this.getItem().isValid()) {
+        } else if (!this.getItem().isValid()) {
             this.errors.put(FIELD_ITEM, this.getItem().getErrors());
-        }else if(this.getItem().getBoughtPrice() <= 0) {
+        } else if (this.getItem().getBoughtPrice() <= 0) {
             this.errors.put(FIELD_ITEM, INVALID_ITEM_BOUGHT_PRICE);
         }
-        
-         if(this.getBuy() == null) {
+
+        if (this.getBuy() == null) {
             this.errors.put(FIELD_BUY, INVALID_BUY);
         }
-         
-         if(this.getItemQnt() <= 0) {
+
+        if (this.getItemQnt() <= 0) {
             this.errors.put(FIELD_ITEM_QNT, INVALID_ITEM_QNT);
         }
-        
+
         return this.errors.isEmpty();
     }
-    
+
     @Override
     public Integer getId() {
         return id;
@@ -69,11 +89,11 @@ public final class ItemBuy extends Entity{
         this.id = id;
     }
 
-    public Double getBoughtPrice() {
+    public double getBoughtPrice() {
         return boughtPrice;
     }
 
-    private void setBoughtPrice(Double boughtPrice) {
+    private void setBoughtPrice(double boughtPrice) {
         this.boughtPrice = boughtPrice;
     }
 
@@ -83,7 +103,7 @@ public final class ItemBuy extends Entity{
 
     public void setItem(Item item) {
         this.item = item;
-        if(item != null) {
+        if (item != null) {
             this.setBoughtPrice(item.getBoughtPrice());
         }
     }
@@ -103,8 +123,5 @@ public final class ItemBuy extends Entity{
     public void setItemQnt(int itemQnt) {
         this.itemQnt = itemQnt;
     }
-    
-    
-    
-    
+
 }

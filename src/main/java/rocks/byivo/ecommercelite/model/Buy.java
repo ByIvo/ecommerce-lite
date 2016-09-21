@@ -9,21 +9,38 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import static rocks.byivo.ecommercelite.model.ModelValidation.Buy.*;
 /**
  *
  * @author byivo
  */
+@javax.persistence.Entity
+@Table(name = "buys")
 public final class Buy extends Entity {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
+    @Column(name = "buy_date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date buyDate;
 
+    @Column(name = "profit_rate", nullable = false)
     private double profitRate;
 
+    @Column(name = "total_expenses", nullable = false)
     private double totalExpenses;
 
+    @OneToMany(targetEntity=ItemBuy.class, mappedBy="buy", fetch=FetchType.EAGER)
     private List<ItemBuy> boughtItems;
 
     public Buy() {
@@ -32,6 +49,10 @@ public final class Buy extends Entity {
         buyDate = new Date();
         
         boughtItems = new ArrayList<>();
+    }
+
+    @Override
+    public <T extends Entity> void safeUpdateItself(T obj) {
     }
 
     @Override

@@ -14,9 +14,12 @@ public class ModelValidation {
     public static class Item {
         public static final String FIELD_NAME = "name";
         public static final String FIELD_BOUGHT_PRICE = "boughtPrice";
+        public static final String FIELD_DESCRIPTION = "description";
         
         public static final String INVALID_NAME = "Você precisa informar um nome!";
         public static final String NAME_TOO_LONG = "O nome do item não pode passar de 50 caracteres!";
+        public static final String INVALID_DESCRIPTION = "Informe uma descrição válida!";
+        public static final String DESCRIPTION_TOO_LONG = "A descrição do produto não pode ser maior que 200 caracteres!";
         
         public static final String INVALID_BOUGHT_PRICE = "Você precisa informar um valor de compra válido!";
     }

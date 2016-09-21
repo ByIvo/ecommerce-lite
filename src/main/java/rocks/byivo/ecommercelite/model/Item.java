@@ -9,18 +9,30 @@ package rocks.byivo.ecommercelite.model;
  *
  * @author byivo
  */
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import static rocks.byivo.ecommercelite.model.ModelValidation.Item.*;
 
+@javax.persistence.Entity
+@Table(name = "items")
 public class Item extends Entity {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
+    @Column(name = "description", length = 200, nullable = false)
     private String description;
 
+    @Column(name = "image", length = 500, nullable = true)
     private String image;
 
+    @Column(name = "bought_price", nullable = false)
     private Double boughtPrice;
 
     public Item() {
@@ -31,28 +43,57 @@ public class Item extends Entity {
 
     @Override
     protected boolean isThisEntityValid() {
-        if(this.getName() != null) {
-            if(this.getName().length() > 50) {
+        if (this.getName() != null) {
+            if (this.getName().length() > 50) {
                 this.errors.put(FIELD_NAME, NAME_TOO_LONG);
             }
-        }else {
+        } else {
             this.errors.put(FIELD_NAME, INVALID_NAME);
         }
-        
-        if(this.getBoughtPrice() != null) {
-            if(this.getBoughtPrice() < 0.0) {
+
+        if(this.getDescription() == null) {
+             this.errors.put(FIELD_DESCRIPTION, INVALID_DESCRIPTION);
+        } else if (this.getDescription().length() > 200) {
+            this.errors.put(FIELD_DESCRIPTION, DESCRIPTION_TOO_LONG);
+        }
+
+        if (this.getBoughtPrice() != null) {
+            if (this.getBoughtPrice() < 0.0) {
                 this.errors.put(FIELD_BOUGHT_PRICE, INVALID_BOUGHT_PRICE);
             }
-        }else {
+        } else {
             this.errors.put(FIELD_BOUGHT_PRICE, INVALID_BOUGHT_PRICE);
         }
-        
+
         return this.errors.isEmpty();
+    }
+
+    @Override
+    public <T extends Entity> void safeUpdateItself(T obj) {
+        if (obj instanceof Item) {
+            Item newest = (Item) obj;
+
+            if (newest.getName() != null) {
+                this.setName(newest.getName());
+            }
+
+            if (newest.getImage() != null) {
+                this.setImage(newest.getImage());
+            }
+
+            if (newest.getDescription() != null) {
+                this.setDescription(newest.getDescription());
+            }
+
+            if (newest.getBoughtPrice() != null) {
+                this.setBoughtPrice(newest.getBoughtPrice());
+            }
+        }
     }
 
     public double getFinalPrice(double avgExpenses, double profits) {
         double totalPrice = this.getBoughtPrice() + avgExpenses;
-        double totalProfit = totalPrice  * (profits / 100);
+        double totalProfit = totalPrice * (profits / 100);
         return totalPrice + totalProfit;
     }
 
