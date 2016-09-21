@@ -1,0 +1,91 @@
+<div class="container-fluid">
+	<div class="page-header text-center">
+		<h1>Cadastro de Itens</h1>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<p class="text-warning" ng-show="userMessage">
+		{{userMessage}}
+	</p>
+</div>
+
+<div class="container-fluid">
+	<div class="col-xs-8 col-md-6 col-lg-6">
+		<div class="input-group">
+			<span class="input-group-addon" >Filtrar:</span>
+			<input type="text" ng-model="filterValue" class="form-control" placeholder="Pesquisar"/>
+		</div>
+	</div>
+
+	<div class="col-xs-4 col-md-4 col-lg-3">
+		<div class="input-group">
+			<span class="input-group-addon">Mostrar:</span>
+			<input type="number" min="1" ng-model="itemsPerPage" class="form-control" placeholder="5"/>
+		</div>
+	</div>
+
+	<div class="col-xs-12 col-md-2 col-lg-3">
+		<a class="btn btn-primary pull-right" href="#/items/new"> Novo Item </a>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<table class="table table-striped table-hover list-items">
+
+		<tr>
+			<th class="col-xs-1">
+				Imagem
+			</th>
+
+			<th class="col-xs-3" th-orderable field-name="'name'" visible-name="'Nome'"></th>
+
+			<th class="col-xs-5" th-orderable field-name="'description'" visible-name="'Descrição'"></th>
+
+			<th class="col-xs-2" th-orderable field-name="'boughtPrice'" visible-name="'Preço'"></th>
+
+			<th class="col-xs-1 text-center">Opções</th>
+		</tr>
+
+		<tr 
+		ng-class="{'danger': !item.boughtPrice}" 
+		ng-click="editItem(item)" 
+		dir-paginate="item in (showedItems = (items | itemFilter:filterValue:'name':'description':'boughtPrice' | orderBy:orderField:desc | itemsPerPage: itemsPerPage))"
+		title="Clique para editar {{item.name}}">
+
+		<td class="text-center">
+			<img class="item-image" src="{{item.image || 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/image-64.png'}}"/>
+		</td>
+
+		<td>{{item.name}}</td>
+		<td>{{item.description}}</td>
+		<td ng-if="item.boughtPrice">{{item.boughtPrice | currency: 'R$ '}}</td>
+		<td ng-if="!item.boughtPrice">Não informado</td>
+
+		<td class="text-center">
+			<a ng-click="deleteItem(item, $event)" class="btn btn-small btn-danger" title="Deseja que {{item.name}} seja excluído?">
+				<span class="glyphicon glyphicon-trash"></span>
+			</a>
+		</td>
+	</tr>
+
+	<tr ng-if="showedItems.length === 0">
+		<td colspan="5" class="text-center">
+			<div class="col-xs-12">Não há nenhum resultado para ser exibido!</div>
+			<div class="col-xs-12"><a href="#/items/new">Adicione um NOVO ITEM</a></div>
+		</td>
+	</tr>
+</table>
+
+
+<div class="container-fluid">
+	<nav class="text-center">
+		<dir-pagination-controls 
+		max-size="5"
+		direction-links="true"
+		template-url="partials/pagination.tpl.html" >
+	</dir-pagination-controls>
+</nav>
+</div>
+
+</div>

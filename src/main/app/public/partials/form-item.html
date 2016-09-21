@@ -1,0 +1,74 @@
+<div class="container-fluid">
+	<div class="page-header text-center">
+		<h1>Cadastro de Itens</h1>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<p class="text-warning" ng-show="userMessage">
+		{{userMessage}}
+	</p>
+</div>
+
+<div class="container-fluid">
+	<form name="itemForm" class="item-form">
+		<div class="form-group">
+			<label for="name">Nome do item</label>
+			<div class="validation-container">
+				<input type="text" required ng-model="item.name" class="validation-field form-control" id="name" placeholder="Nome do item" ng-class="modelError.name ? 'invalid' : 'valid'">
+				<span></span>
+				<p class="validation-block">{{modelError.name}}</p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="boughtPrice">Preço de compra</label>
+			<div class="validation-container">
+				<input type="text" id="boughtPrice" required ui-money-mask="2" ng-init="carro.valor=0.00" class="validation-field form-control" ng-model="item.boughtPrice" ng-class="modelError.boughtPrice ? 'invalid' : 'valid'">
+				<span></span>
+				<p class="validation-block">{{modelError.boughtPrice}}</p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="image">Imagem</label>
+
+			<div class="col-xs-12">
+				<img class="col-sm-2 control-label item-image" src="{{item.image}}"/>
+
+				<div class="col-sm-10 validation-container">
+					<input type="text" class="form-control item-image-src" ng-model="item.image" id="image" placeholder="Link da imagem" ng-class="modelError.image ? 'invalid' : 'valid'">
+					<span></span>
+					<p class="validation-block">{{modelError.image}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="description">Descrição</label>
+			<div class="validation-container">
+				<textarea id="description" ng-model="item.description"  class="form-control" placeholder="Descrição do item" ng-class="modelError.description ? 'invalid' : 'valid'"></textarea>
+				<span></span>
+				<p class="validation-block">{{modelError.description}}</p>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="!idEditing">
+			<div class="col-xs-12 col-md-6">
+				<a ng-click="save()" class="col-xs-12 btn btn-primary">Salvar</a>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="idEditing">
+			<div class="col-xs-12 col-md-6">
+				<a ng-click="edit()" class="col-xs-12 btn btn-warning">Editar</a>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-xs-12 col-md-6">
+				<a href="#/items" class="col-xs-12 btn btn-default">Voltar</a>
+			</div>
+		</div>
+	</form>
+</div>

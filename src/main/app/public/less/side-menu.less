@@ -1,0 +1,86 @@
+.side-menu {
+	position: absolute;
+	float: right;
+
+	height: 100%;
+	width: 30%;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	background-color: @light-primary-color;
+	transition: all 0.3s ease;
+
+	ul {
+		list-style: none;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		border-right: 10px solid @primary-color;
+
+		li {
+			background-color: @light-primary-color;
+			border-bottom: 1px solid @divider-color;
+
+			a {
+				display: block;
+				padding: 18px 0 18px 25px;
+				font-size: 15px;
+				position: relative;
+
+				color: @secondary-text;
+				text-decoration: none;
+
+				transition: all 0.3s ease;
+
+				> i {
+					display: inline-block;
+					position: absolute;
+					color: @accent-color;
+					right: 0px;
+					transform: translateX(-100%);
+					line-height: 55px;
+
+					transition: all 0.3s ease;
+				}
+
+				> span {
+					display: inline-block;
+					padding-left: 0px;
+				}
+
+				&:hover {
+					background-color: @primary-color;
+					color: @text-color;
+					text-decoration: none;
+
+					> i {
+						transform: translateX(0);
+						color: @text-color;
+					}
+				}
+			}
+		}
+	}
+
+	.btn-visibility {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background-color: @accent-color;
+		color: @text-color;
+		text-align: center;
+
+		position: fixed;
+		top: 50%;
+		left: 30%;
+		transform: translate(-50%, -50%);
+
+		display: block;
+		line-height: 30px;
+
+		text-decoration: none !important;
+		cursor: pointer;
+	}
+}

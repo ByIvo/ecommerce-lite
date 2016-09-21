@@ -1,0 +1,29 @@
+table.list-items {
+	margin-top: 20px;
+
+	tr {
+		th {
+			cursor: pointer;
+
+			span {
+
+				&.order:after {
+					font-family: @glyph-fonts;
+					font-size: 8px;
+				}
+
+				&.asc-order:after {
+					 content: "\e114";
+				}
+
+				&.desc-order:after {
+					 content: "\e113";
+				}
+			}
+		}
+
+		td {
+			cursor: pointer;
+		}
+	}
+}

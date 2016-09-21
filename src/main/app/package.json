@@ -1,0 +1,22 @@
+{
+	"name": "ecommerce-lite",
+	"version": "0.1.0",
+	"description": "Ecommerce Lite",
+	"scripts": {
+		"install": "bower install"
+		},
+	"license": "ISC",
+	"author": "@ByIvo",
+	"devDependencies": {
+		"grunt": "~0.4.5",
+		"grunt-contrib-watch": "^0.6.1",
+		"grunt-contrib-jshint": "^0.12.0",
+		"jshint-stylish": "^2.1.0",
+		"grunt-contrib-clean": "^0.5.x",
+		"grunt-contrib-copy": "^0.8.x",
+		"grunt-contrib-less": "^1.2.0",
+		"grunt-contrib-cssmin": "0.14.0",
+		"grunt-contrib-uglify": "~0.5.0",
+		"grunt-html-build": "^0.5.3"
+	}
+}

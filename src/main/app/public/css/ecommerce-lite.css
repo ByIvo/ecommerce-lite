@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.ttf') format('truetype');
+}
+.side-menu {
+  position: absolute;
+  float: right;
+  height: 100%;
+  width: 30%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #bbdefb;
+  transition: all 0.3s ease;
+}
+.side-menu ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-right: 10px solid #2196f3;
+}
+.side-menu ul li {
+  background-color: #bbdefb;
+  border-bottom: 1px solid #BDBDBD;
+}
+.side-menu ul li a {
+  display: block;
+  padding: 18px 0 18px 25px;
+  font-size: 15px;
+  position: relative;
+  color: #757575;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.side-menu ul li a > i {
+  display: inline-block;
+  position: absolute;
+  color: #FF5252;
+  right: 0px;
+  transform: translateX(-100%);
+  line-height: 55px;
+  transition: all 0.3s ease;
+}
+.side-menu ul li a > span {
+  display: inline-block;
+  padding-left: 0px;
+}
+.side-menu ul li a:hover {
+  background-color: #2196f3;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.side-menu ul li a:hover > i {
+  transform: translateX(0);
+  color: #FFFFFF;
+}
+.side-menu .btn-visibility {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #FF5252;
+  color: #FFFFFF;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  display: block;
+  line-height: 30px;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+table.list-items {
+  margin-top: 20px;
+}
+table.list-items tr th {
+  cursor: pointer;
+}
+table.list-items tr th span.order:after {
+  font-family: 'Glyphicons Halflings';
+  font-size: 8px;
+}
+table.list-items tr th span.asc-order:after {
+  content: "\e114";
+}
+table.list-items tr th span.desc-order:after {
+  content: "\e113";
+}
+table.list-items tr td {
+  cursor: pointer;
+}
+.item-form .form-group .item-image-src {
+  height: 50px;
+}
+.item-form .form-group .validation-block {
+  display: block;
+  margin-top: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #FF5252;
+}
+.item-image {
+  max-height: 50px;
+  max-width: 50px;
+  box-sizing: content-box !important;
+  min-width: 50px;
+  min-height: 50px;
+}
+.message {
+  transition: all 1s ease;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  bottom: 20px;
+}
+form .validation-container {
+  position: relative;
+}
+form .validation-container input.validation-field,
+form .validation-container textarea.validation-field {
+  transition: all 0.8s ease;
+}
+form .validation-container input.validation-field:focus,
+form .validation-container textarea.validation-field:focus {
+  box-shadow: inset 0 1px 1px #bbdefb;
+  border-color: #1976d2;
+}
+form .validation-container input.validation-field:focus.valid,
+form .validation-container textarea.validation-field:focus.valid {
+  border: 1px solid #4aba58;
+  box-shadow: 0 0 6px rgba(74, 186, 88, 0.8);
+  transition: all 0.8s ease;
+}
+form .validation-container input.validation-field:focus.valid + span,
+form .validation-container textarea.validation-field:focus.valid + span {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 8px 16px;
+}
+form .validation-container input.validation-field:focus.valid + span:before,
+form .validation-container textarea.validation-field:focus.valid + span:before {
+  content: "\e013";
+  font-family: 'Glyphicons Halflings';
+  color: #4aba58;
+  transition: all linear 0.5s, box-shadow linear 0.5s;
+}
+form .validation-container input.validation-field.invalid,
+form .validation-container textarea.validation-field.invalid,
+form .validation-container input.validation-field.ng-invalid,
+form .validation-container textarea.validation-field.ng-invalid {
+  border: 1px solid #D32F2F !important;
+  box-shadow: 0 0 6px #eeadad !important;
+  color: #571212 !important;
+  transition: all 0.8s ease !important;
+}
+form .validation-container input.validation-field.invalid + span,
+form .validation-container textarea.validation-field.invalid + span,
+form .validation-container input.validation-field.ng-invalid + span,
+form .validation-container textarea.validation-field.ng-invalid + span {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 8px 16px;
+}
+form .validation-container input.validation-field.invalid + span:before,
+form .validation-container textarea.validation-field.invalid + span:before,
+form .validation-container input.validation-field.ng-invalid + span:before,
+form .validation-container textarea.validation-field.ng-invalid + span:before {
+  content: "\e014" !important;
+  font-family: 'Glyphicons Halflings';
+  color: #D32F2F !important;
+  transition: all linear 0.5s, box-shadow linear 0.5s;
+}
