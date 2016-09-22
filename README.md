@@ -97,6 +97,10 @@ A api do sistema criado possui duas rotas mapeadas:
 
 * DELETE : /items/id -> Deleta um item, especificado pelo id na URL. Também pode gerar um erro 404 de não encontrado;
 
+#### Estrutura do Item
+
+``` {"id": 1, "name": "Produto 01", "boughtPrice": 200.0, "Description": "", "image": ""}```
+
 ### BUY API
 
 * GET : /buys -> Retorna uma lista completa de todas as compras do sistema.
@@ -104,3 +108,14 @@ A api do sistema criado possui duas rotas mapeadas:
 
 * POST : /buys -> Cria uma nova compra por base no JSON informado no corpo da chamada. Retorna 201 caso criado com sucesso!
 
+#### Estrutura da compra
+
+``` {
+"id": 1,
+"buyDate": "2016-09-22",
+"profitRate": 0.1,
+"totalExpenses": 400.0,
+"boughtItems": [  
+ {"id": 1, "item": {ESTRUTURA DO ITEM}, "itemQnt": 1}
+]
+}```
