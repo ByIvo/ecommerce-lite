@@ -1,0 +1,25 @@
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+	<div class="cart-item">
+		<div class="center-block">
+			<img class="item-image" src="{{cartItem.item.image || 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/image-64.png'}}"/>
+		</div>
+
+		<div class="center-block">
+			<b>{{cartItem.item.name}}</b>
+		</div>
+
+		<div class="center-block">
+			<b>Quantidade:</b> {{cartItem.itemQnt}}
+		</div>
+
+		<div class="center-block">
+			<b>Preço:</b> {{cartItem.getTotalCost(buy) | currency: 'R$ '}}
+		</div>
+
+		<div class="center-block">
+			<button class="btn btn-xs btn-danger btn-remove" ng-click="buy.removeItem(cartItem)">
+			<span class="glyphicon glyphicon-trash"></span>Excluir
+			</button>
+		</div>
+	</div>
+</div>

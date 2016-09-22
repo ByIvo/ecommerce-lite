@@ -1,0 +1,26 @@
+<div class="col-xs-12">
+	<div class="col-xs-12 col-md-6">
+		<div class="input-group">
+			<span class="input-group-addon" >Média Despesas:</span>
+			<span class="input-group-addon" >{{buy.getAvgExpenses() | currency: 'R$ '}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 col-md-6">
+		<div class="input-group col-xs-12">
+			<span class="input-group-addon" >Total de Itens:</span>
+			<span class="input-group-addon" >{{buy.getTotalItemQnt()}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12">
+		<div class="input-group col-xs-12">
+			<span class="input-group-addon" >Total da Compra:</span>
+			<span class="input-group-addon" >{{buy.getTotalCost() | currency: 'R$ '}}</span>
+		</div>
+	</div>
+
+	<div class="row">
+		<cart-item ng-repeat="cartItem in buy.boughtItems" cart-item-ref="cartItem" buy="buy"></cart-item>
+	</div>
+</div>

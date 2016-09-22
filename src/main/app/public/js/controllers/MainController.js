@@ -20,15 +20,15 @@ angular.module('ecommerce-lite').controller('MainController',
 		resetMessage(0);
 
 		$scope.$on('success', function(event, title) {
-			this.showMessage(title, 'success');
+			showMessage(title, 'success');
 		});
 
 		$scope.$on('error', function(event, title) {
-			this.showMessage(title, 'danger');
+			showMessage(title, 'danger');
 		});
 
 		$scope.$on('warning', function(event, title) {
-			this.showMessage(title, 'warning');
+			showMessage(title, 'warning');
 		});
 
 		$scope.$on('confirm', function(event, title, message, action) {

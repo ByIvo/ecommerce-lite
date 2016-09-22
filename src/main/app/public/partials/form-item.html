@@ -15,7 +15,7 @@
 		<div class="form-group">
 			<label for="name">Nome do item</label>
 			<div class="validation-container">
-				<input type="text" required ng-model="item.name" class="validation-field form-control" id="name" placeholder="Nome do item" ng-class="modelError.name ? 'invalid' : 'valid'">
+				<input type="text" ng-model="item.name" class="validation-field form-control" id="name" placeholder="Nome do item" ng-class="modelError.name ? 'invalid' : 'valid'">
 				<span></span>
 				<p class="validation-block">{{modelError.name}}</p>
 			</div>
@@ -24,7 +24,7 @@
 		<div class="form-group">
 			<label for="boughtPrice">Preço de compra</label>
 			<div class="validation-container">
-				<input type="text" id="boughtPrice" required ui-money-mask="2" ng-init="carro.valor=0.00" class="validation-field form-control" ng-model="item.boughtPrice" ng-class="modelError.boughtPrice ? 'invalid' : 'valid'">
+				<input type="text" id="boughtPrice" ui-money-mask="2" ng-init="carro.valor=0.00" class="validation-field form-control" ng-model="item.boughtPrice" ng-class="modelError.boughtPrice ? 'invalid' : 'valid'">
 				<span></span>
 				<p class="validation-block">{{modelError.boughtPrice}}</p>
 			</div>

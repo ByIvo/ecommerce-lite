@@ -22,10 +22,20 @@ module.exports = function(grunt) {
 		'public/js/controllers/MainController.js',
 		'public/js/controllers/ItemController.js',
 		'public/js/controllers/ItemsController.js',
+		'public/js/controllers/BuyController.js',
+
 		'public/js/directives/SideMenuDirective.js',
 		'public/js/directives/ThOrderableDirective.js',
+		'public/js/directives/CartDirective.js',
+		'public/js/directives/CartItemDirective.js',
+		'public/js/directives/SellableItemSelectionDirective.js',
+
 		'public/js/filters/ItemFilter.js',
+
 		'public/js/services/ItemService.js',
+		'public/js/services/BuyService.js',
+		'public/js/services/CartService.js',
+		'public/js/services/CartItemService.js',
 		],
 
 		stylesheetFiles:[

@@ -1,0 +1,6 @@
+#BUILD FILES
+target/*
+
+#Context
+src/main/webapp/META-INF/context.xml
+/target-grunt/

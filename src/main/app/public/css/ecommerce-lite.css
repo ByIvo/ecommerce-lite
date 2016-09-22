@@ -7,23 +7,28 @@
   position: absolute;
   float: right;
   height: 100%;
-  width: 30%;
+  width: 80px;
   overflow-x: hidden;
   overflow-y: auto;
+  border-right: 10px solid #2196f3;
   background-color: #bbdefb;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 .side-menu ul {
   list-style: none;
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
-  border-right: 10px solid #2196f3;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .side-menu ul li {
   background-color: #bbdefb;
   border-bottom: 1px solid #BDBDBD;
+}
+.side-menu ul li:first-child {
+  border-top: 1px solid #BDBDBD;
 }
 .side-menu ul li a {
   display: block;
@@ -32,45 +37,31 @@
   position: relative;
   color: #757575;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 .side-menu ul li a > i {
   display: inline-block;
   position: absolute;
   color: #FF5252;
-  right: 0px;
-  transform: translateX(-100%);
+  left: 0px;
   line-height: 55px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 .side-menu ul li a > span {
   display: inline-block;
   padding-left: 0px;
 }
-.side-menu ul li a:hover {
+.side-menu ul li a:hover,
+.side-menu ul li a.active {
   background-color: #2196f3;
+  box-shadow: 5px 5px 10px #BDBDBD;
   color: #FFFFFF;
   text-decoration: none;
 }
-.side-menu ul li a:hover > i {
-  transform: translateX(0);
+.side-menu ul li a:hover > i,
+.side-menu ul li a.active > i {
+  transform: translateX(50px);
   color: #FFFFFF;
-}
-.side-menu .btn-visibility {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #FF5252;
-  color: #FFFFFF;
-  text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 30%;
-  transform: translate(-50%, -50%);
-  display: block;
-  line-height: 30px;
-  text-decoration: none !important;
-  cursor: pointer;
 }
 table.list-items {
   margin-top: 20px;
@@ -100,6 +91,36 @@ table.list-items tr td {
   font-size: 15px;
   margin-bottom: 10px;
   color: #FF5252;
+}
+.sellable-item {
+  transition: all ease 0.5s;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #BDBDBD;
+}
+.sellable-item div {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.sellable-item.sellable-item-hover:hover {
+  background-color: #bbdefb;
+}
+.cart-item {
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #BDBDBD;
+  border-radius: 10px;
+}
+.cart-item div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cart-item .btn-remove {
+  width: 100%;
+  margin-top: 10px;
 }
 .item-image {
   max-height: 50px;

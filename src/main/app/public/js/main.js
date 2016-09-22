@@ -5,21 +5,24 @@ angular.module("ecommerce-lite", ['ngRoute', 'ngResource', 'ui.utils.masks', 'an
 	{
 		templateUrl: 'partials/items.html',
 		controller: 'ItemsController'
-	});
-
-	$routeProvider.when("/items/new",
+	})
+	.when("/items/new",
 	{
 		templateUrl: 'partials/form-item.html',
 		controller: 'ItemController'
-	});
-
-	$routeProvider.when("/items/:itemId/edit",
+	})
+	.when("/items/:itemId/edit",
 	{
 		templateUrl: 'partials/form-item.html',
 		controller: 'ItemController'
-	});
+	})
 
-	$routeProvider.otherwise({
+	.when("/buy/new",
+	{
+		templateUrl: 'partials/new-buy.html',
+		controller: 'BuyController'
+	})
+	.otherwise({
 		redirectTo: '/items'
 	});
 }]);

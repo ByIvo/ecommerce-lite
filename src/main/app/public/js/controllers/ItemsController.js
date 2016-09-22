@@ -52,5 +52,4 @@ angular.module('ecommerce-lite').controller('ItemsController',
 		};
 
 		findItems();
-	}]
-	);
+	}]);
