@@ -4,7 +4,7 @@ angular.module('ecommerce-lite').directive('sellableItemSelectable',['Cart', fun
 		scope.quantity = 1;
 
 		scope.addItem = function() {
-			Cart.buy.addItem(scope.sellableItem, scope.quantity);
+			Cart.buy().addItem(scope.sellableItem, scope.quantity);
 		};
 	}
 

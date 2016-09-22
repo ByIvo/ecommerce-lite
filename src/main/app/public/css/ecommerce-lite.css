@@ -4,7 +4,7 @@
   src: url('../fonts/glyphicons-halflings-regular.ttf') format('truetype');
 }
 .side-menu {
-  position: absolute;
+  position: fixed;
   float: right;
   height: 100%;
   width: 80px;
@@ -136,6 +136,7 @@ table.list-items tr td {
   transform: translateX(-50%);
   width: 80%;
   bottom: 20px;
+  z-index: 9999;
 }
 form .validation-container {
   position: relative;

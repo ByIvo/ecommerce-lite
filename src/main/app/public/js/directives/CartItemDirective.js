@@ -5,7 +5,7 @@ angular.module('ecommerce-lite').directive('cartItem', function() {
 		strict: 'E',
 		scope: {
 			cartItem: '=cartItemRef',
-			buy: '='
+			buy: '=buyRef'
 		}
 	};
 });

@@ -1,7 +1,7 @@
 angular.module('ecommerce-lite').directive('cart', ['Cart', function(Cart) {
 
 	function link(scope, element, attrs) {
-		scope.buy = Cart.buy;
+		scope.buy = Cart.buy();
 	}
 
 	return {

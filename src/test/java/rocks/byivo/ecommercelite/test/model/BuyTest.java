@@ -110,7 +110,6 @@ public class BuyTest {
         assertFalse(isValid);
         assertEquals(INVALID_BOUGHT_ITEM, errors.get(FIELD_BOUGHT_ITEM));
         assertEquals(INVALID_BUY_DATE, errors.get(FIELD_BUY_DATE));
-        assertEquals(INVALID_PROFIT_RATE, errors.get(FIELD_PROFIT_RATE));
         assertEquals(INVALID_TOTAL_EXPENSES, errors.get(FIELD_TOTAL_EXPENSES));
     }
 
@@ -168,18 +167,6 @@ public class BuyTest {
     public void testInvalidProfitRateBuy() {
         Buy buy = new Buy();
         buy.setProfitRate(-10.0);
-
-        boolean isValid = buy.isValid();
-        Map<String, Object> errors = buy.getErrors();
-
-        assertFalse(isValid);
-        assertEquals(INVALID_PROFIT_RATE, errors.get(FIELD_PROFIT_RATE));
-    }
-
-    @Test
-    public void testInvalidOver100ProfitRateBuy() {
-        Buy buy = new Buy();
-        buy.setProfitRate(100.1);
 
         boolean isValid = buy.isValid();
         Map<String, Object> errors = buy.getErrors();

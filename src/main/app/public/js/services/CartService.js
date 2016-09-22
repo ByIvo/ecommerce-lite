@@ -1,72 +1,79 @@
 angular.module('ecommerce-lite').factory('Cart',
 	['CartItem', 'Buy', function(CartItem, Buy) {
-		var buy = new Buy();
+		
+		function newBuy() {
+			var buy = new Buy();
 
-		buy.boughtItems = [];
-		buy.totalExpenses =  400.0;
-		buy.profitRate = 0.0;
+			buy.boughtItems = [];
+			buy.totalExpenses =  400.0;
+			buy.profitRate = 0.0;
 
-		buy.addItem = function(item, quantity) {
-			var cartItem = this.findItemBuy(item);
-			cartItem.itemQnt+=quantity;
-		};
+			buy.addItem = function(item, quantity) {
+				var cartItem = this.findItemBuy(item);
+				cartItem.itemQnt+=quantity;
+			};
 
-		buy.removeItem = function(item) {
-			var index = _.indexOf(buy.boughtItems, item);
+			buy.removeItem = function(item) {
+				var index = _.indexOf(buy.boughtItems, item);
 
-			if(index > -1) {
-				buy.boughtItems.splice(index, 1);
-			}
-		};
+				if(index > -1) {
+					buy.boughtItems.splice(index, 1);
+				}
+			};
 
-		buy.findItemBuy = function(item) {
-			var cartItem = _.find(buy.boughtItems, function(itemBuy) {
-				return item.id === itemBuy.item.id;
-			});
+			buy.findItemBuy = function(item) {
+				var cartItem = _.find(buy.boughtItems, function(itemBuy) {
+					return item.id === itemBuy.item.id;
+				});
 
-			if(!cartItem) {
-				cartItem = CartItem.newCartItem(item);
+				if(!cartItem) {
+					cartItem = CartItem.newCartItem(item);
 
-				buy.boughtItems.push(cartItem);
-			}
+					buy.boughtItems.push(cartItem);
+				}
 
-			return cartItem;
-		};
+				return cartItem;
+			};
 
-		buy.getAvgExpenses = function() {
-			var totalItemQnt = this.getTotalItemQnt();
-			if(totalItemQnt === 0) return 0;
-			
-			return this.totalExpenses / totalItemQnt;
-		};
+			buy.getAvgExpenses = function() {
+				var totalItemQnt = this.getTotalItemQnt();
+				if(totalItemQnt === 0) return 0;
 
-		buy.getTotalCost = function(){
-			var totalCost = 0.0;
-			var self = this;
+				return this.totalExpenses / totalItemQnt;
+			};
 
-			_.each(this.boughtItems, function(cartItem) {
-				totalCost += cartItem.getTotalCost(self);
-			});
+			buy.getTotalCost = function(){
+				var totalCost = 0.0;
+				var self = this;
 
-			return totalCost;
-		};
+				_.each(this.boughtItems, function(cartItem) {
+					totalCost += cartItem.getTotalCost(self);
+				});
 
-		buy.getTotalItemQnt = function(){
-			var totalItems = 0;
+				return totalCost;
+			};
 
-			_.each(this.boughtItems, function(cartItem) {
-				totalItems += cartItem.itemQnt;
-			});
+			buy.getTotalItemQnt = function(){
+				var totalItems = 0;
 
-			return totalItems;
-		};
+				_.each(this.boughtItems, function(cartItem) {
+					totalItems += cartItem.itemQnt;
+				});
+
+				return totalItems;
+			};
+
+			return buy;
+		}
+
+		var controlBuy = newBuy();
+
+		function clearBuy() {
+			controlBuy = newBuy();
+		}
 
 		return {
-			buy: buy,
-			clearBuy: function() {
-				buy.boughtItems = [];
-				buy.totalExpenses = 400.0;
-				buy.profitRate = 0.0;
-			}
+			buy: function() {return controlBuy;},
+			clearBuy: clearBuy
 		};
 	}]);

@@ -2,7 +2,7 @@ angular.module('ecommerce-lite').controller('BuyController',
 	['$scope', 'Item', 'Cart', 'Buy', '$location', function($scope, Item, Cart, Buy, $location) {
 		$scope.sellableItems = [];
 		$scope.sellableItemsFilter = '';
-		$scope.buy = Cart.buy;
+		$scope.buy = Cart.buy();
 
 		$scope.finishBuy = function() {
 			var promise = $scope.buy.$save();
@@ -11,7 +11,7 @@ angular.module('ecommerce-lite').controller('BuyController',
 			.then(function() {
 				Cart.clearBuy();
 				$scope.$emit('success', "Compra feita com sucesso!");
-				$location.path("#/buys/");
+				$location.path("#/buys");
 			})
 			.catch(function(error) {
 				$scope.$emit('error', error.data);

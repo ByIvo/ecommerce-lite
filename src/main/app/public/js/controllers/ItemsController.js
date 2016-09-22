@@ -36,7 +36,7 @@ angular.module('ecommerce-lite').controller('ItemsController',
 				findItems();
 			})
 			.catch(function(error) {
-				$scope.$emit('error', message.statusText);
+				$scope.$emit('error', error.data);
 			});
 		};
 
