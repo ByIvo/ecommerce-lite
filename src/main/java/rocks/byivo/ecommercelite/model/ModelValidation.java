@@ -42,7 +42,7 @@ public class ModelValidation {
         public static final String FIELD_BUY_DATE = "buyDate";
         
         public static final String INVALID_BOUGHT_ITEM = "Você precisa comprar ao menos um produto";
-        public static final String INVALID_PROFIT_RATE = "Você deve fornecer apenas uma porcentagem (0% à 100%) de lucro!";
+        public static final String INVALID_PROFIT_RATE = "Você deve fornecer uma porcentagem de lucro!";
         public static final String INVALID_TOTAL_EXPENSES = "Você deve fornecer o valor total das despesas que quer diluir na venda";
         public static final String INVALID_BUY_DATE = "Ocorreu um problema com a data de venda";
     }

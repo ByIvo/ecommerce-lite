@@ -82,7 +82,7 @@ public class Item extends Entity {
 
     public double getFinalPrice(double avgExpenses, double profits) {
         double totalPrice = this.getBoughtPrice() + avgExpenses;
-        double totalProfit = totalPrice * (profits / 100);
+        double totalProfit = totalPrice * profits;
         return totalPrice + totalProfit;
     }
 

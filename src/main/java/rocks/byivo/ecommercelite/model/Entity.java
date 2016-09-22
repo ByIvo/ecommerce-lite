@@ -20,7 +20,7 @@ public abstract class Entity implements Serializable{
     public abstract Integer getId();
     public abstract void setId(Integer id);
     protected abstract boolean isThisEntityValid();
-    public abstract <T extends Entity> void safeUpdateItself(T obj);
+    
     
     @JsonIgnore
     protected Map<String, Object> errors;
@@ -29,6 +29,8 @@ public abstract class Entity implements Serializable{
         errors = new HashMap<>();
     }
 
+    public <T extends Entity> void safeUpdateItself(T obj){}
+    
     public Map<String, Object> getErrors() {
         return errors;
     }

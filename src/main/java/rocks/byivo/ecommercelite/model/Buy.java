@@ -53,10 +53,6 @@ public final class Buy extends Entity {
     }
 
     @Override
-    public <T extends Entity> void safeUpdateItself(T obj) {
-    }
-
-    @Override
     protected boolean isThisEntityValid() {
              
         if(this.getBoughtItems().isEmpty()) {
@@ -72,7 +68,7 @@ public final class Buy extends Entity {
             }
         }
         
-        if(this.getProfitRate() < 0 || this.getProfitRate() > 100) {
+        if(this.getProfitRate() < 0) {
              this.errors.put(FIELD_PROFIT_RATE, INVALID_PROFIT_RATE);
         }
         

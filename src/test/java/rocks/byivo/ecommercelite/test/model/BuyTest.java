@@ -27,7 +27,7 @@ public class BuyTest {
     public void testValidBuy() {
         Buy buy = new Buy();
         buy.setTotalExpenses(600.0);
-        buy.setProfitRate(10.0);
+        buy.setProfitRate(0.1);
 
         Item item1 = new Item();
         item1.setBoughtPrice(100.0);
@@ -128,7 +128,7 @@ public class BuyTest {
     @Test
     public void test10SelectedProductsBuy() {
         Buy buy = new Buy();
-        buy.setProfitRate(20.0);
+        buy.setProfitRate(.20);
         buy.setTotalExpenses(500.0);
 
         Item item1 = new Item();

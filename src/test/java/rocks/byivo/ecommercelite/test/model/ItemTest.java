@@ -136,7 +136,7 @@ public class ItemTest {
         item.setBoughtPrice(200.0);
 
         boolean isValid = item.isValid();
-        double profits = 10.0;
+        double profits = 0.1;
         double avgExpenses = 400.0;
 
         Double sellPrice = item.getFinalPrice(avgExpenses, profits);

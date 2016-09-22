@@ -179,7 +179,7 @@ public class ItemBuyTest {
         ItemBuy itemBuy = new ItemBuy();
         
         Buy buy = new Buy();
-        buy.setProfitRate(20.0);
+        buy.setProfitRate(0.2);
         buy.setTotalExpenses(900.0);
         
         Item item = new Item();
