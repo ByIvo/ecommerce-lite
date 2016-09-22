@@ -11,3 +11,5 @@ src/main/webapp/META-INF/context.xml
 /src/main/app/public/vendor/*
 
 /src/main/app/dist/*
+
+/src/main/app/public/css/*
