@@ -22,12 +22,16 @@
 ```
 
 > Caso queira desenvolver o app sem apoio do maven, pode executar o comando que ficará verificando alterações nos arquivos e fazendo as mudanças necessárias
+
 ```bash
  grunt watch
 ```
 
 > Caso queira gerar uma build do APP manualmente, execute
 
+```bash
+ grunt dist
+```
 
 ## Configurando JNDI para acesso ao Banco de dados MySQL
 
@@ -62,3 +66,41 @@ O sistema cria as tabelas automaticamente segundo seu Mapeamento Relacional, ent
 ```bash
  create database ecommerce_lite;
 ```
+## Testes
+
+## Testes unitários
+
+> A API possue os testes unitários de seus modelos no pacote src/test; Ele pode facilmente ser executado com o apoio de sua IDE de desenvolvimento;
+
+> Para testar a API executando, você precisará do POSTMAN > https://www.getpostman.com/
+
+> Importe o arquivo ecommerce-lite.postman_colletion.json que se encontra na pasta src/test/api;
+> Adicione uma variável de ambiente chamada **ecommerce_lite** com o contexto de acesso à API rodando (ex: http://byivo.rocks/ecommerce-lite/)
+> Dentro do Runner do Postman, execute os testes importados selecionando o ambiente acima configurado (Obs: Execute com a base de dados zerada);
+
+## API
+
+A api do sistema criado possui duas rotas mapeadas:
+
+* /items/:id -> Gerencia os Itens do sistema;
+* /buys/:id -> Gerencia as compras do sistema;
+ 
+### ITEM API
+
+* GET : /items -> Retorna uma lista completa de todos os items cadastrados;
+* GET : /items/id -> Retorna um item, especificado pelo id na URL. Também pode gerar um erro 404 de não encontrado;
+* GET : /items/sellable -> Retorna uma lista dos itens cujo preço de compra seja maior que 0, ou seja, estão aptos à serem comprados;
+
+* POST : /items -> Cria um novo Item com base em um JSON passado no corpo da chamda. Retorna 201 caso criado com sucesso e 422 caso haja problemas de validação.
+
+* PUT : /items/id -> Altera um item, especificado pelo id na URL. O conteúdo da troca será especificado por um JSON contendo as propriedades da troca (vide testes Postman). Pode gerar um erro 404;
+
+* DELETE : /items/id -> Deleta um item, especificado pelo id na URL. Também pode gerar um erro 404 de não encontrado;
+
+### BUY API
+
+* GET : /buys -> Retorna uma lista completa de todas as compras do sistema.
+* GET : /buys/id -> Retorna uma compra determinada pelo ID na URL; Pode gerar um erro 404
+
+* POST : /buys -> Cria uma nova compra por base no JSON informado no corpo da chamada. Retorna 201 caso criado com sucesso!
+
