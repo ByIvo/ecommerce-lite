@@ -30,6 +30,7 @@ module.exports = function(grunt) {
 		'public/js/directives/CartDirective.js',
 		'public/js/directives/CartItemDirective.js',
 		'public/js/directives/SellableItemSelectionDirective.js',
+		'public/js/directives/BuyDirective.js',
 
 		'public/js/filters/ItemFilter.js',
 

@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import static rocks.byivo.ecommercelite.model.ModelValidation.Buy.*;
 /**
  *
@@ -41,7 +43,8 @@ public final class Buy extends Entity {
     @Column(name = "total_expenses", nullable = false)
     private double totalExpenses;
 
-    @OneToMany(targetEntity=ItemBuy.class, mappedBy="buy", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity=ItemBuy.class, mappedBy="buy", fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @Fetch (FetchMode.SELECT)
     private List<ItemBuy> boughtItems;
 
     public Buy() {
@@ -121,7 +124,6 @@ public final class Buy extends Entity {
         return buyDate;
     }
 
-    @JsonIgnore
     public void setBuyDate(Date buyDate) {
         this.buyDate = buyDate;
     }

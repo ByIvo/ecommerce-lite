@@ -56,8 +56,15 @@ public class BuyService extends GenericService<Buy> implements IBuyService{
     public Object update(Integer id, Buy obj) throws DataAccessException {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
-    
-    
-    
+
+    @Override
+    public Object delete(Integer id) throws DataAccessException {
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @Override
+    public Object deleteEntity(Buy old) throws DataAccessException {
+       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }

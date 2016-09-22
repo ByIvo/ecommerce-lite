@@ -25,7 +25,7 @@ angular.module("ecommerce-lite", ['ngRoute', 'ngResource', 'ui.utils.masks', 'an
 
 	.when("/buys",
 	{
-		templateUrl: 'partials/buyes.html',
+		templateUrl: 'partials/buys.html',
 		controller: 'BuysController'
 	})
 

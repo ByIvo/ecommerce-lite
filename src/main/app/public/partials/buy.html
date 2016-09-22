@@ -1,0 +1,38 @@
+<div class="col-xs-12">
+	<table class="table table-bordered table-hover table-striped">
+		<tr>
+			<th>Data da compra </th>
+			<th>Porcentagem de Lucro </th>
+			<th>Despesas Totais </th>
+			<th>Quantidade de itens </th>
+			<th>Média de despesas </th>
+			<th>Valor total</th>
+			<th>Itens</th>
+		</tr>
+
+		<tr ng-repeat="buy in buys">
+
+			<td>{{buy.buyDate}}</td>
+			<td>{{buy.profitRate}}</td>
+			<td>{{buy.totalExpenses | currency: 'R$ '}}</td>
+			<td>{{buy.totalItemQnt}}</td>
+			<td>{{buy.avgExpenses | currency: 'R$ '}}</td>
+			<td>{{buy.totalCost | currency: 'R$ '}}</td>
+			<td>
+				<table class="table table-bordered">
+					<tr>
+						<th> Nome do Item </th>
+						<th> Quantidade </th>
+						<th> Total </th>
+					</tr>
+
+					<tr ng-repeat="itemBuy in buy.boughtItems">
+						<td>{{itemBuy.item.name}}</td>
+						<td>{{itemBuy.itemQnt}}</td>
+						<td>{{itemBuy.totalCost | currency: 'R$ '}}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
