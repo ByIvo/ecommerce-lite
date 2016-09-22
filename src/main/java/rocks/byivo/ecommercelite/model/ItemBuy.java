@@ -5,6 +5,7 @@
  */
 package rocks.byivo.ecommercelite.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -34,6 +35,7 @@ public final class ItemBuy extends Entity {
 
     @ManyToOne
     @JoinColumn(name = "buy_id", nullable = false)
+    @JsonIgnore
     private Buy buy;
 
     @Column(name = "item_qnt", nullable = false)
@@ -123,5 +125,11 @@ public final class ItemBuy extends Entity {
     public void setItemQnt(int itemQnt) {
         this.itemQnt = itemQnt;
     }
+
+    @Override
+    public String toString() {
+        return "ItemBuy{" + "id=" + id + ", boughtPrice=" + boughtPrice + ", item=" + item + ", itemQnt=" + itemQnt + '}';
+    }
+
 
 }

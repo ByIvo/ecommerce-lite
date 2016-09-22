@@ -40,6 +40,7 @@ public abstract class GenericService<T extends Entity> implements IBaseActions<T
     public Object update(Integer id, T obj) throws DataAccessException {
         T old = (T) this.getDao().findById(id);
 
+        System.out.println(obj.toString());
         if (old == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

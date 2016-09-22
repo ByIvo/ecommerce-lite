@@ -31,7 +31,7 @@ public class ModelValidation {
         
         public static final String INVALID_ITEM = "Você precisa informar um produto válido!";
         public static final String INVALID_ITEM_BOUGHT_PRICE = "O produto precisa ter um preço!";
-        public static final String INVALID_BUY = "O nome do item não pode passar de 50 caracteres!";
+        public static final String INVALID_BUY = "Compra Inválida";
         public static final String INVALID_ITEM_QNT = "Você precisa adicionar pelo menos um item";
     }
     

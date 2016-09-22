@@ -24,6 +24,7 @@ public abstract class DefaultController<T extends Entity> implements IBaseAction
     @Override
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
     public Object create(@RequestBody T obj) throws DataAccessException {
+        System.out.println(obj.toString());
         return this.getService().create(obj);
     }
 

@@ -51,8 +51,8 @@ public class Item extends Entity {
             this.errors.put(FIELD_NAME, INVALID_NAME);
         }
 
-        if(this.getDescription() == null) {
-             this.errors.put(FIELD_DESCRIPTION, INVALID_DESCRIPTION);
+        if (this.getDescription() == null) {
+            this.errors.put(FIELD_DESCRIPTION, INVALID_DESCRIPTION);
         } else if (this.getDescription().length() > 200) {
             this.errors.put(FIELD_DESCRIPTION, DESCRIPTION_TOO_LONG);
         }
@@ -72,22 +72,11 @@ public class Item extends Entity {
     public <T extends Entity> void safeUpdateItself(T obj) {
         if (obj instanceof Item) {
             Item newest = (Item) obj;
-
-            if (newest.getName() != null) {
-                this.setName(newest.getName());
-            }
-
-            if (newest.getImage() != null) {
-                this.setImage(newest.getImage());
-            }
-
-            if (newest.getDescription() != null) {
-                this.setDescription(newest.getDescription());
-            }
-
-            if (newest.getBoughtPrice() != null) {
-                this.setBoughtPrice(newest.getBoughtPrice());
-            }
+            
+            this.setName(newest.getName());
+            this.setImage(newest.getImage());
+            this.setDescription(newest.getDescription());
+            this.setBoughtPrice(newest.getBoughtPrice());
         }
     }
 
@@ -138,4 +127,10 @@ public class Item extends Entity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" + "id=" + id + ", name=" + name + ", description=" + description + ", image=" + image + ", boughtPrice=" + boughtPrice + '}';
+    }
+
 }

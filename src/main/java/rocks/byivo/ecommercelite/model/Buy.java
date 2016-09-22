@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public final class Buy extends Entity {
     @Column(name = "total_expenses", nullable = false)
     private double totalExpenses;
 
-    @OneToMany(targetEntity=ItemBuy.class, mappedBy="buy", fetch=FetchType.EAGER)
+    @OneToMany(targetEntity=ItemBuy.class, mappedBy="buy", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ItemBuy> boughtItems;
 
     public Buy() {
@@ -152,4 +153,12 @@ public final class Buy extends Entity {
     public void setBoughtItems(List<ItemBuy> boughtItems) {
         this.boughtItems = boughtItems;
     }
+
+    @Override
+    public String toString() {
+        return "Buy{" + "id=" + id + ", buyDate=" + buyDate + ", profitRate=" + profitRate + ", totalExpenses=" + totalExpenses + ", boughtItems=" + boughtItems + '}';
+    }
+    
+    
+    
 }
