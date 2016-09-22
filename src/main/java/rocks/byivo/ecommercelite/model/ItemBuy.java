@@ -48,10 +48,6 @@ public final class ItemBuy extends Entity {
         this.setItem(item);
         this.buy = buy;
     }
-
-    @Override
-    public <T extends Entity> void safeUpdateItself(T obj) {
-    }
     
     public double getTotalCost() {
         double avgExpenses = this.getBuy().getAvgExpenses();

@@ -23,6 +23,7 @@ module.exports = function(grunt) {
 		'public/js/controllers/ItemController.js',
 		'public/js/controllers/ItemsController.js',
 		'public/js/controllers/BuyController.js',
+		'public/js/controllers/BuysController.js',
 
 		'public/js/directives/SideMenuDirective.js',
 		'public/js/directives/ThOrderableDirective.js',
