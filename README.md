@@ -1,5 +1,9 @@
 # ecommerce-lite
 
+## Diagrama de classes
+
+![Diagrama de classes](http://i.imgur.com/whFNBvV.png)
+
 ## Rodando o projeto
 > Após importar o projeto para sua stack de desenvolvimento, é possível, através do maven, dar o build no APP que consome os serviços; Para isso funcionar corretamente, você precisará dos seguintes itens instalados
 
